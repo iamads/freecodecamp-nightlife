@@ -1,1 +1,1 @@
-mongod --bind_ip=192.168.1.11 --dbpath=data --nojournal --rest "$@"
+mongod --bind_ip=192.168.1.3 --dbpath=../data --nojournal --rest "$@"

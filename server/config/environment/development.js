@@ -5,8 +5,8 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/ads-dev'
+    uri: 'mongodb://localhost/nightlife'
   },
 
-  seedDB: true
+  seedDB: false
 };
