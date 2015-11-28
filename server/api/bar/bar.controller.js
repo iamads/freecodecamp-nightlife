@@ -10,6 +10,28 @@ exports.index = function(req, res) {
     return res.status(200).json(bars);
   });
 };
+// Search for place
+
+exports.places = function(req,res){
+console.log(process.env['yelp_consumer_key']);
+console.log(req.params);
+var Yelp = require('yelp')
+
+var yelp = new Yelp({ 
+	consumer_key: process.env['yelp_consumer_key'],
+	consumer_secret: process.env['yelp_consumer_secret'],
+	token: process.env['yelp_token'],
+	token_secret: process.env['yelp_token_secret']
+	});
+yelp.search({term:'bar',location:req.params.location}, function(err,bars){
+	if (err){ return handleError(res,err); }
+	if (!bars){return res.status(200).send("No bar Found");}
+	console.log(bars);
+	return res.status(200).json(bars);
+});
+};
+
+
 
 // Get a single bar
 exports.show = function(req, res) {
@@ -55,5 +77,6 @@ exports.destroy = function(req, res) {
 };
 
 function handleError(res, err) {
+  console.log(err);	
   return res.status(500).send(err);
 }
