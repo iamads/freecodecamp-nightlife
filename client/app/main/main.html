@@ -1,11 +1,21 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
 
-<header class="hero-unit" id="banner">
   <div class="container">
-    <h1>Voting App</h1>
-    <p class="lead">Share your opinioins with us!</p>
+    <h1>Nightlife</h1>
+    <p class="lead">Track your friends!</p>
+    <form name = "search" ng-submit="searchNow()">
+	    <input type="text" name="place" ng-model="place" placeholder="New York">
+	    <button class="btn btn-primary" type="submit" >Search</button>
+    </form>		    
+
   </div>
-</header>
+ <ul ng-repeat="place in places">
+	 <li>
+	 	<img class="img-rounded" ng-src="{{ place.image_url }}" src="{{ place.image_url }}" /> 
+		<a ng-href="{{ place.url }}" href="{{ place.url }}">{{ place.name}}</a>
+		<img ng-src="{{ place.rating_img_url }}">{{ place.review_count }} reviews<br/>
+		{{ place.snippet_text }} 
+	 </li>
+  </ul>	  
 
 
 

@@ -19,4 +19,13 @@ angular.module('adsApp')
     $scope.deleteThing = function(thing) {
       $http.delete('/api/things/' + thing._id);
     };
+
+    // Bars
+    $scope.places = []; 
+    $scope.searchNow = function(){
+	console.log($scope.place);    
+    	$http.get('/api/bars/'+$scope.place).success(function(placesfromyelp){
+		$scope.places = placesfromyelp;	
+	});
+    };
   });

@@ -26,8 +26,7 @@ var yelp = new Yelp({
 yelp.search({term:'bar',location:req.params.location}, function(err,bars){
 	if (err){ return handleError(res,err); }
 	if (!bars){return res.status(200).send("No bar Found");}
-	console.log(bars);
-	return res.status(200).json(bars);
+	return res.status(200).json(bars['businesses']);
 });
 };
 
